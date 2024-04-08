@@ -171,10 +171,10 @@ with ui.card(full_screen=True):
         """Get the latest reading and return a dataframe with current readings"""
         deque_snapshot, df, latest_dictionary_entry = reactive_calc_combined()
         pd.set_option('display.width', None)        # Use maximum width
-        return render.DataGrid( df,width="100%")
+        return render.DataGrid( df,width="75%")
 
 #Display the Baltimore map card
-    with ui.card(style="width: 100%; height: 200px;"):
+    with ui.card(style="width: 25%; height: 100px;"):
         ui.card_header("Omaha Map", style="background-color: #d1ecf1; color: black;")
         @render_widget  
         def map():
