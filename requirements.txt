@@ -1,1 +1,11 @@
+faicons
+pandas
+pyarrow
+plotly
+scipy
+shiny
+shinylive
+shinywidgets
+shinyswatch
+pyshiny
 
