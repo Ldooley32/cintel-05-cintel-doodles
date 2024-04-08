@@ -120,7 +120,7 @@ with ui.sidebar(open="open"):
     )
 
 # In Shiny Express, everything not in the sidebar is in the main panel
-with ui.layout_columns():
+with ui.layout_columns(min_height="30%"):
    with ui.value_box(
         showcase=icon_svg("sun"),
         theme="bg-gradient-yellow-orange",
@@ -162,8 +162,8 @@ with ui.card(full_screen=True):
             return f"{latest_dictionary_entry['timestamp']}"
 
 
-#with ui.card(full_screen=True, min_height="40%"):
-with ui.card(full_screen=True):
+#with ui.card(full_screen=False, min_height="30%"):
+with ui.card(full_screen=False):
     ui.card_header("Most Recent Readings")
 
     @render.data_frame
@@ -171,14 +171,15 @@ with ui.card(full_screen=True):
         """Get the latest reading and return a dataframe with current readings"""
         deque_snapshot, df, latest_dictionary_entry = reactive_calc_combined()
         pd.set_option('display.width', None)        # Use maximum width
-        return render.DataGrid( df,width="75%")
+        return render.DataGrid( df,width="50%")
 
 #Display the Baltimore map card
-    with ui.card(style="width: 25%; height: 100px;"):
-        ui.card_header("Omaha Map", style="background-color: #d1ecf1; color: black;")
-        @render_widget  
-        def map():
-            return Map(center=(41.2565, -95.9345), zoom=10)  
+with ui.card(style="width: 25%; height: 100px;"):
+    ui.card_header("Omaha Map", style="background-color: #d1ecf1; color: black;")
+        
+    @render_widget  
+    def map():
+        return Map(center=(41.2565, -95.9345), zoom=10)  
 
 with ui.card():
     ui.card_header("Chart with Current Trend")
